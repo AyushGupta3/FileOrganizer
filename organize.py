@@ -4,7 +4,7 @@ DIRECTORIES = {
     "IMAGES": [".jpeg", ".jpg", ".tiff", ".gif", ".bmp", ".png", ".bpg"],
     "VIDEOS": [".avi", ".flv", ".wmv", ".mov", ".mp4", ".webm"],
     "DOCUMENTS": [".epub", ".docx", ".doc",".xps", ".dotx", ".docm", ".dox", ".xls", ".xlsx", ".ppt",".pptx"],
-    "ARCHIVES": [".iso", ".tar",".7z",".dmg", ".rar", ".zip"],
+    "ARCHIVES": [".iso", ".tar",".7z",".dmg", ".rar", ".zip", ".gz"],
     "AUDIO": [".mp3", ".msv",".raw", ".wav"],
     "PLAINTEXT": [".txt", ".in", ".out"],
     "PDF": [".pdf"],
@@ -26,8 +26,8 @@ def organize_files():
     delete_empty_directories()
         
 def delete_empty_directories():
-    for key in DIRECTORIES.keys():
-        if not os.listdir(key):
+    for key in os.listdir():
+        if os.path.isdir(key) and not os.listdir(key):
             os.rmdir(key)
 
 def create_directories():
